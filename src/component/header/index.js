@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { INPUT_FOCUS_ON, INPUT_FOCUS_OFF } from '../../store/actionsTypes';
+import { actionCreaters } from './store';
 import { CSSTransition } from 'react-transition-group';
 import {
     HeaderWrapper,
@@ -57,22 +58,16 @@ const Header = props => {
 };
 const mapStateToProps = state => {
     return {
-        focused: state.focused
+        focused: state.header.focused
     };
 };
 const mapDispatchToProps = dispatch => {
     return {
         handleInputFocus() {
-            const action = {
-                type: INPUT_FOCUS_ON
-            };
-            dispatch(action);
+            dispatch(actionCreaters.inputFocusOn());
         },
         handleInputBlur() {
-            const action = {
-                type: INPUT_FOCUS_OFF
-            };
-            dispatch(action);
+            dispatch(actionCreaters.inputFocusOff());
         }
     };
 };
