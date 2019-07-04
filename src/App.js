@@ -1,7 +1,7 @@
 import React from 'react';
 import { GlobalStyle } from './style';
 import { IconStyle } from './statics/iconfont/iconfont.js';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Header from './component/header';
 import Home from './pages/home';
@@ -14,10 +14,10 @@ function App() {
             <GlobalStyle />
             <IconStyle />
             <Provider store={store}>
-                <Header />
                 <BrowserRouter>
+                    <Header />
                     <Route path="/" exact component={Home} />
-                    <Route path="/detail" exact component={Detail} />
+                    <Route path="/detail/:id" exact component={Detail} />
                 </BrowserRouter>
             </Provider>
         </div>
