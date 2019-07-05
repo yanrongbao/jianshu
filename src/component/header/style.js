@@ -20,7 +20,7 @@ export const Logo = styled.div`
 `;
 
 export const Nav = styled.div`
-    width: 960px;
+    width: 930px;
     height: 100%;
     margin: 0 auto;
 `;
@@ -29,6 +29,7 @@ export const NavItem = styled.div`
     line-height: 56px;
     font-size: 17px;
     padding: 0 15px;
+    cursor: pointer;
     color: #333;
     &.left {
         float: left;
