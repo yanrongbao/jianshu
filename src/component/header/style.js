@@ -9,7 +9,7 @@ export const HeaderWrapper = styled.div`
 export const Logo = styled.div`
     position: absolute;
     top: 0px;
-    left: 0ox;
+    left: 0px;
     display: block;
     padding-right: 70px;
     box-sizing: border-box;
