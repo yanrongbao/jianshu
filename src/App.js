@@ -1,7 +1,8 @@
 import React from 'react';
 import { GlobalStyle } from './style';
 import { IconStyle } from './statics/iconfont/iconfont.js';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { Route } from 'react-router'
 import { Provider } from 'react-redux';
 import Header from './component/header';
 import Home from './pages/home';

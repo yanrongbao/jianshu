@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { LoginWrapper, LoginBox, Input, Button } from './style';
 import { actionCreators } from './store';
-import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router';
 class Login extends PureComponent {
     render() {
         const { login } = this.props;
