@@ -51,25 +51,60 @@ export const ListItem = styled.div`
     border-bottom: 1px solid #dcdcdc;
     overflow: hidden;
     .list-pic {
-        width: 120px;
+        width: 150px;
         height: 100px;
         display: block;
         float: right;
     }
 `;
 export const ListInfo = styled.div`
-    width: 500px;
+    width: 470px;
     float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100px;
     .title {
         line-height: 27px;
         font-size: 18px;
         font-weight: bold;
         color: #2f2f2f;
+        margin: -7px 0 4px;
     }
     .desc {
         font-size: 13px;
         line-height: 24px;
         color: #999;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+    .toolbar{
+        font-size:12px;
+        display:flex;
+        span{
+            margin-right:12px;
+            align-self: center;
+            i{
+                font-size:14px;
+            }
+        }
+        .meta{
+            color: #ea6f5a;
+        }
+        .nickname {
+           color:rgb(180, 180, 180);
+        }
+        .nickname:hover {
+            color:#787878;
+        }
+        span{
+            color:#b4b4b4;
+        }
+        .ic-list-comments:hover{
+            color:rgb(120, 120, 120);;
+        }
     }
 `;
 export const RecommendWrapper = styled.div`

@@ -1,23 +1,23 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import Topic from './components/Topic';
+// import Topic from './components/Topic';
 import Recommend from './components/Recommend';
 import Writer from './components/Writer';
 import List from './components/List';
 import { HomeWrapper, HomeLeft, HomeRight, BackTop } from './style';
 import { actionCreators } from './store';
 class Home extends PureComponent {
-    render() {
+    render () {
         const { showScroll } = this.props;
         return (
             <HomeWrapper>
                 <HomeLeft>
-                    <img
+                    {/* <img
                         className="banner-image"
                         src="https://upload.jianshu.io/admin_banners/web_images/4675/569882aa7e239c755c754c4d170a859eca26f752.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
                         alt=""
-                    />
-                    <Topic />
+                    /> */}
+                    {/* <Topic /> */}
                     <List />
                 </HomeLeft>
                 <HomeRight>
@@ -30,14 +30,14 @@ class Home extends PureComponent {
             </HomeWrapper>
         );
     }
-    componentDidMount() {
+    componentDidMount () {
         this.props.changeHomeData();
         this.bindEvent();
     }
-    componentWillUnmount() {
+    componentWillUnmount () {
         window.removeEventListener('scroll', this.props.changeScrollTopShow);
     }
-    bindEvent() {
+    bindEvent () {
         window.addEventListener('scroll', this.props.changeScrollTopShow);
     }
     handleScrollTop = () => {
@@ -48,10 +48,10 @@ const mapState = state => ({
     showScroll: state.getIn(['home', 'showScroll'])
 });
 const mapDispatch = dispatch => ({
-    changeHomeData(action) {
+    changeHomeData (action) {
         dispatch(actionCreators.getHomeInfo());
     },
-    changeScrollTopShow() {
+    changeScrollTopShow () {
         let top = document.documentElement.scrollTop;
         if (top > 400) {
             dispatch(actionCreators.toggleTopShow(true));

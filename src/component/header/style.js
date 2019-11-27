@@ -31,6 +31,10 @@ export const NavItem = styled.div`
     padding: 0 15px;
     cursor: pointer;
     color: #333;
+    i{
+        font-size:20px;
+        margin-right: 5px;
+    }
     &.left {
         float: left;
     }
@@ -40,6 +44,16 @@ export const NavItem = styled.div`
     }
     &.active {
         color: #ea6f5a;
+    }
+    &.beta-img-box{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .beta-img{
+        height:25px;
+
     }
 `;
 

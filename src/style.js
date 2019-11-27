@@ -43,4 +43,7 @@ export const GlobalStyle = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
     }
+    a:link,:active, a:visited,a:hover{
+        color:#000;
+    }
 `;

@@ -12,6 +12,5 @@ export default (state = loginState, action) => {
             return state.set('login', action.value);
         default:
             return state;
-            break;
     }
 };

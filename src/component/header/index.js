@@ -19,13 +19,15 @@ import {
     SearchInfoTtile,
     SearchInfoItem
 } from './style';
+const betaImg = require('../../statics/images/beta.png')
 class Header extends Component {
-    render() {
+    render () {
         const {
             focused,
             handleInputFocus,
             handleInputBlur,
             login,
+            list,
             loginOut
         } = this.props;
         return (
@@ -35,18 +37,26 @@ class Header extends Component {
                 </Link>
 
                 <Nav>
-                    <NavItem className="left active">首页</NavItem>
-                    <NavItem className="left">下载APP</NavItem>
+                    <NavItem className="left active">
+                        <i className="iconfont">&#xe8d0;</i>
+                        发现
+                    </NavItem>
+                    <NavItem className="left"><i className="iconfont">&#xe614;</i>关注</NavItem>
+                    <NavItem className="left"><i className="iconfont">&#xe634;</i>消息</NavItem>
                     {login ? (
                         <NavItem className="right" onClick={loginOut}>
                             退出
                         </NavItem>
                     ) : (
-                        <Link to="/login">
-                            <NavItem className="right">登录</NavItem>
-                        </Link>
-                    )}
-
+                            <Link to="/login">
+                                <NavItem className="right">登录</NavItem>
+                            </Link>
+                        )}
+                    <NavItem className="right beta-img-box">
+                        <img className="beta-img"
+                            src={betaImg}
+                            alt="" />
+                    </NavItem>
                     <NavItem className="right">
                         <i className="iconfont">&#xe636;</i>
                     </NavItem>
@@ -58,7 +68,7 @@ class Header extends Component {
                         >
                             <NavSearch
                                 className={focused ? 'focused' : ''}
-                                onFocus={handleInputFocus}
+                                onFocus={() => handleInputFocus(list)}
                                 onBlur={handleInputBlur}
                             />
                         </CSSTransition>
@@ -87,7 +97,7 @@ class Header extends Component {
         );
     }
 
-    getListArea() {
+    getListArea () {
         const {
             focused,
             list,
@@ -153,20 +163,20 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
     return {
-        handleInputFocus() {
-            dispatch(actionCreators.getList());
+        handleInputFocus (list) {
+            (list.size === 0) && dispatch(actionCreators.getList());
             dispatch(actionCreators.input_focus_on());
         },
-        handleInputBlur() {
+        handleInputBlur () {
             dispatch(actionCreators.input_focus_off());
         },
-        handleMouseEnter() {
+        handleMouseEnter () {
             dispatch(actionCreators.mouse_enter());
         },
-        handleMouseLeave() {
+        handleMouseLeave () {
             dispatch(actionCreators.mouse_leave());
         },
-        handlePageChange(page, totalPage, spinIcon) {
+        handlePageChange (page, totalPage, spinIcon) {
             let originAngle = spinIcon.style.transform.replace(/[^0-9]/gi, '');
             if (originAngle) {
                 originAngle = Number.parseInt(originAngle, 10);
@@ -180,7 +190,7 @@ const mapDispatchToProps = dispatch => {
                 dispatch(actionCreators.page_change(1));
             }
         },
-        loginOut() {
+        loginOut () {
             dispatch(loginActionCreators.loginOut());
         }
     };

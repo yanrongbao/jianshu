@@ -14,6 +14,5 @@ export default (state = deatilState, action) => {
             });
         default:
             return state;
-            break;
     }
 };

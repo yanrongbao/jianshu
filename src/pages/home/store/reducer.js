@@ -39,6 +39,5 @@ export default (state = homeState, action) => {
             return state.set('showScroll', action.show);
         default:
             return state;
-            break;
     }
 };

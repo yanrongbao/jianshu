@@ -1,5 +1,7 @@
 import * as types from './actionsTypes';
 import { fromJS } from 'immutable';
+
+//immutable 对象
 const headerState = fromJS({
     focused: false,
     mouseIn: false,
@@ -12,10 +14,8 @@ export default (state = headerState, action) => {
     switch (action.type) {
         case types.INPUT_FOCUS_ON:
             return state.set('focused', true);
-            break;
         case types.INPUT_FOCUS_OFF:
             return state.set('focused', false);
-            break;
         case types.CHANGE_LIST:
             return state.merge({
                 list: action.data,
@@ -27,16 +27,12 @@ export default (state = headerState, action) => {
         // break;
         case types.MOUSE_ENTER:
             return state.set('mouseIn', true);
-            break;
         case types.MOUSE_LEAVE:
             return state.set('mouseIn', false);
-            break;
 
         case types.PAGE_CHANGE:
             return state.set('page', action.page);
-            break;
         default:
             return state;
-            break;
     }
 };

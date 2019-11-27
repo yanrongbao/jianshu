@@ -11,7 +11,7 @@ import Login from './pages/login';
 import Write from './pages/write';
 import store from './store';
 
-function App() {
+function App () {
     return (
         <div className="dell">
             <GlobalStyle />
