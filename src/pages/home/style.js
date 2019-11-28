@@ -50,6 +50,7 @@ export const ListItem = styled.div`
     padding: 20px 0;
     border-bottom: 1px solid #dcdcdc;
     overflow: hidden;
+    display:flex;
     .list-pic {
         width: 150px;
         height: 100px;
@@ -88,6 +89,7 @@ export const ListInfo = styled.div`
             align-self: center;
             i{
                 font-size:14px;
+                margin-right: 5px;
             }
         }
         .meta{
@@ -138,4 +140,66 @@ export const BackTop = styled.div`
     line-height: 60px;
     text-align: center;
     border: 1px solid #ccc;
+`;
+export const WriteWrapper = styled.div`
+    .head{
+        font-size: 14px;
+        color: #969696;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        .change-authors{
+            cursor:pointer;
+            display: flex;
+            &:hover{
+                color: #787878
+            }
+        }
+    }
+    .list{
+        .list-item{
+            padding:10px 0px;
+            display:felx;
+            a{
+                margin-right: 10px;
+                display:block;
+                .img-box{
+                    width:48px;
+                        height:48px;
+                    img{
+                        width:100%;
+                        height:100%;
+                        border: 1px solid #ddd;
+                        border-radius: 50%;
+                    }
+                }
+            }
+            .info{
+                width:222px;
+                padding: 5px 0px;
+                >div:first-child{
+                    display:flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    .name{
+                        font-size:14px;
+                    }
+                    .follow{
+                        font-size: 13px;
+                        color: #42c02e;
+                    }
+                }
+               
+                >div:last-child{
+                    margin-top: 12px;
+                    font-size: 12px;
+                    color: #969696;
+                    span{
+                        margin-right:12px;
+                    }
+                }
+            }
+        }
+        
+    }
 `;

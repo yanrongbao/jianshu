@@ -46,4 +46,7 @@ export const GlobalStyle = createGlobalStyle`
     a:link,:active, a:visited,a:hover{
         color:#000;
     }
+    a{
+        text-decoration: none;
+    }
 `;

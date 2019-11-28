@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { TopicWrapper, TopicItem } from '../style';
 class Topic extends PureComponent {
-    render() {
+    render () {
         const { topicList } = this.props;
         return (
             <TopicWrapper>
@@ -20,7 +20,7 @@ class Topic extends PureComponent {
         );
     }
 }
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
         topicList: state.getIn(['home', 'topicList'])
     };

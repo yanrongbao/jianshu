@@ -14,7 +14,10 @@ const homeState = fromJS({
         { id: 4, imgUrl: JSDXT }
     ],
     articlePage: 1,
-    showScroll: false
+    showScroll: false,
+    writeList: [],
+    writePage: 1,
+    totalWritePage: 1,
 });
 const changeHomeData = (state, action) => {
     return state.merge({
@@ -28,6 +31,13 @@ const addHomeList = (state, action) => {
         articlePage: action.articlePage
     });
 };
+const addWriteList = (state, action) => {
+    return state.merge({
+        writeList: fromJS(action.writeList),
+        totalWritePage: action.totalWritePage,
+        writePage: action.writePage,
+    })
+}
 
 export default (state = homeState, action) => {
     switch (action.type) {
@@ -37,6 +47,10 @@ export default (state = homeState, action) => {
             return addHomeList(state, action);
         case types.TOGGLE_SCROLL_SHOW:
             return state.set('showScroll', action.show);
+        case types.GET_WRITE_LIST:
+            return addWriteList(state, action);
+        case types.WRITEPAGE_CHANGE:
+            return state.set('writePage', action.writePage);
         default:
             return state;
     }

@@ -4,6 +4,7 @@ import { actionCreators } from './store';
 import { actionCreators as loginActionCreators } from '../../pages/login/store';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
+import { domRotate360deg } from 'utils/dom';
 import {
     HeaderWrapper,
     Logo,
@@ -35,7 +36,6 @@ class Header extends Component {
                 <Link to="/">
                     <Logo />
                 </Link>
-
                 <Nav>
                     <NavItem className="left active">
                         <i className="iconfont">&#xe8d0;</i>
@@ -118,6 +118,7 @@ class Header extends Component {
                     </SearchInfoItem>
                 );
             }
+            console.log(pageList)
         }
         if (focused || mouseIn) {
             return (
@@ -177,13 +178,7 @@ const mapDispatchToProps = dispatch => {
             dispatch(actionCreators.mouse_leave());
         },
         handlePageChange (page, totalPage, spinIcon) {
-            let originAngle = spinIcon.style.transform.replace(/[^0-9]/gi, '');
-            if (originAngle) {
-                originAngle = Number.parseInt(originAngle, 10);
-            } else {
-                originAngle = 0;
-            }
-            spinIcon.style.transform = `rotate(${originAngle + 360}deg)`;
+            domRotate360deg(spinIcon);
             if (page < totalPage) {
                 dispatch(actionCreators.page_change(page + 1));
             } else {

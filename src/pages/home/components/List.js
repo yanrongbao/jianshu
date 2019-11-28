@@ -12,11 +12,6 @@ class List extends PureComponent {
                     return (
                         <Link key={index} to={'/detail/' + item.get('id')}>
                             <ListItem>
-                                <img
-                                    className="list-pic"
-                                    src={item.get('imgUrl')}
-                                    alt=""
-                                />
                                 <ListInfo>
                                     <h3 className="title">
                                         {item.get('title')}
@@ -38,6 +33,11 @@ class List extends PureComponent {
                                         </span>
                                     </div>
                                 </ListInfo>
+                                <img
+                                    className="list-pic"
+                                    src={item.get('imgUrl')}
+                                    alt=""
+                                />
                             </ListItem>
                         </Link>
                     );

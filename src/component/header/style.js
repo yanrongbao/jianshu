@@ -130,12 +130,8 @@ export const SearchInfoSticth = styled.span`
     float: right;
     font-size: 13px;
     .spin {
-        display: block;
-        float: left;
         font-size: 12px;
         margin-right: 2px;
-        transition: all 0.4s ease-in;
-        transform-origin: center center;
     }
 `;
 export const SearchInfoList = styled.div`
