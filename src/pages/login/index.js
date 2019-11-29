@@ -4,7 +4,7 @@ import { LoginWrapper, LoginBox, Input, Button } from './style';
 import { actionCreators } from './store';
 import { Redirect } from 'react-router';
 class Login extends PureComponent {
-    render() {
+    render () {
         const { login } = this.props;
 
         if (!login) {
@@ -46,7 +46,7 @@ const mapState = state => ({
     login: state.getIn(['login', 'login'])
 });
 const mapDispatch = dispatch => ({
-    loginUser(accountElem, passwordElem) {
+    loginUser (accountElem, passwordElem) {
         dispatch(actionCreators.login(accountElem.value, passwordElem.value));
     }
 });

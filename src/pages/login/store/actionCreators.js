@@ -8,18 +8,21 @@ export const loginOut = result => ({
     type: types.LOGINOUT,
     value: false
 });
-export const login = (username, password) => {
+export const login = (name, password) => {
     return dispatch => {
         axios
-            .get(
-                '/api/login.json?username=' + username + '&password=' + password
+            .post(
+                '/apis/login', {
+                name,
+                password
+            }
             )
             .then(resp => {
-                const result = resp.data.data;
-                if (result) {
+                const result = resp.data;
+                if (result.code === 1) {
                     dispatch(changeLogin(result));
                 } else {
-                    alert('登录失败');
+                    alert(result.msg);
                 }
             });
     };
