@@ -1,23 +1,24 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { Route } from 'react-router'
-import Header from 'component/header';
-import Home from 'pages/home';
-import Detail from 'pages/detail/loadable';
-import Login from 'pages/login';
-import Write from 'pages/write';
+import React, { Suspense } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import routes from './routers';
 export default () => (
-    <div>
-        <BrowserRouter>
-            <Header />
-            <Route path="/" exact component={Home} />
-            <Route path="/login/" exact component={Login} />
-            <Route path="/write/" exact component={Write} />
-            <Route path="/detail/:id" exact component={Detail} />
-        </BrowserRouter>
-        <BrowserRouter>
-            <Route path="/login" exact component={Login} />
-        </BrowserRouter>
-    </div>
-
+    <Router>
+        {
+            routes.map((router, i) => {
+                if (router.exact) {
+                    return <Suspense key={i} fallback={<div>Loading</div>}>
+                        <Route exact path={router.path} render={props => (
+                            <router.component {...props} routes={router.route} />
+                        )} />
+                    </Suspense>
+                } else {
+                    return <Suspense key={i} fallback={<div>Loading11</div>}>
+                        <Route path={router.path} render={props => (
+                            <router.component {...props} routes={router.route} />
+                        )} />
+                    </Suspense>
+                }
+            })
+        }
+    </Router>
 )

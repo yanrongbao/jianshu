@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import { DetailWrapper, Header, Content } from './style';
 import { actionCreators } from './store';
 class Detail extends PureComponent {
-    render() {
+    render () {
         const { title, content } = this.props;
         return (
             <DetailWrapper>
@@ -13,7 +13,7 @@ class Detail extends PureComponent {
             </DetailWrapper>
         );
     }
-    componentDidMount() {
+    componentDidMount () {
         this.props.getDetail(this.props.match.params.id);
     }
 }
@@ -22,7 +22,7 @@ const mapState = state => ({
     content: state.getIn(['detail', 'content'])
 });
 const mapDispatch = dispatch => ({
-    getDetail(id) {
+    getDetail (id) {
         dispatch(actionCreators.getDetail(id));
     }
 });

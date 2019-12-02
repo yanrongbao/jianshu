@@ -3,7 +3,7 @@ import { GlobalStyle } from './style';
 import { IconStyle } from './statics/iconfont/iconfont.js';
 import { Provider } from 'react-redux';
 import store from './store';
-import RouteView from 'router/index';
+import RouterView from 'router/index';
 
 function App () {
     return (
@@ -11,7 +11,7 @@ function App () {
             <GlobalStyle />
             <IconStyle />
             <Provider store={store}>
-                <RouteView></RouteView>
+                <RouterView></RouterView>
             </Provider>
         </div>
     );
