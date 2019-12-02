@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { style } from '_dom-helpers@5.1.3@dom-helpers';
 
 export const LoginWrapper = styled.div`
     position: absolute;
@@ -17,7 +18,7 @@ export const Logo = styled.div`
         width:100%;
     }
 `;
-export const LoginBox = styled.div`
+export const LoginContent = styled.div`
     width: 400px;
     margin: 100px auto;
     background: #fff;
@@ -49,6 +50,16 @@ export const LoginBox = styled.div`
         }
     }
 `;
+export const Form = styled.form`
+position: relative;
+.tip{
+    position: absolute;
+    top: 105px;
+    right: 5px;
+    font-size: 12px;
+    color: red;
+}
+`;
 export const InputBox = styled.div`
 position: relative;
 width: 100%;
@@ -65,15 +76,7 @@ i{
         border-radius: 4px 4px 0 0;
     }
 }
-span{
-    position: absolute;
-    top: 20px;
-    right: 5px;
-    font-size: 12px;
-    color: red;
-}
-`
-
+`;
 export const Input = styled.input`
 width: 100%;
 height: 50px;
@@ -89,7 +92,7 @@ export const Remember = styled.div`
 display:flex;
 justify-content:space-between;
 align-items: center;
-margin: 15px 0;
+margin: 20px 0;
 span{
     margin-left: 5px;
     font-size: 15px;

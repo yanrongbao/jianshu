@@ -4,13 +4,13 @@ import { ListItem, ListInfo, ListMore } from '../style';
 import { actionCreators } from '../store';
 import { Link } from 'react-router-dom';
 class List extends PureComponent {
-    render () {
+    render() {
         const { articleList, getMoreList, articlePage } = this.props;
         return (
             <div>
                 {articleList.map((item, index) => {
                     return (
-                        <Link key={index} to={'/detail/' + item.get('id')}>
+                        <Link key={index} to={'/index/detail/' + item.get('id')}>
                             <ListItem>
                                 <ListInfo>
                                     <h3 className="title">
@@ -56,7 +56,7 @@ const mapState = state => {
     };
 };
 const mapDispatch = dispatch => ({
-    getMoreList (articlePage) {
+    getMoreList(articlePage) {
         dispatch(actionCreators.getMoreList(articlePage));
     }
 });

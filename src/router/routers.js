@@ -2,22 +2,22 @@
 import { lazy } from 'react';
 const routes = [
     {
-        path: '/',
+        path: '/index',
         component: lazy(() => import('pages/layout')),
         exact: false,
         route: [
             {
-                path: '/',
+                path: '/index/',
                 component: lazy(() => import('pages/home')),
                 exact: true
             },
             {
-                path: '/write',
+                path: '/index/write',
                 component: lazy(() => import('pages/write')),
                 exact: true
             },
             {
-                path: '/detail/:id',
+                path: '/index/detail/:id',
                 component: lazy(() => import('pages/detail')),
                 exact: true
             },
