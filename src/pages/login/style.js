@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { style } from '_dom-helpers@5.1.3@dom-helpers';
 
 export const LoginWrapper = styled.div`
     position: absolute;
@@ -174,4 +173,7 @@ export const Button = styled.div`
     box-sizing: border-box;
     text-align:center;
     cursor:pointer;
+    &.sign-up-button{
+        background: #42c02e;
+    }
 `;

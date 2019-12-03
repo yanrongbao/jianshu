@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Form, InputBox, Input, Button, Logo, Remember, MoreSign } from '../../style';
+import { Form, InputBox, Input, Button, Remember, MoreSign } from '../../style';
 import { actionCreators } from '../../store';
 import { Validator } from 'utils/form/index';
 import { connect } from 'react-redux';

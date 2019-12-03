@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Form, InputBox, Input, Button, Logo, Remember, MoreSign } from '../../style';
+import { Form, InputBox, Input, Button, MoreSign } from '../../style';
 import { actionCreators } from '../../store';
 import { Validator } from 'utils/form/index';
 import { connect } from 'react-redux';
@@ -48,28 +48,16 @@ class RegisterBox extends PureComponent {
                         />
                         <i className="iconfont">&#xe600;</i>
                     </InputBox>
-                    <Remember>
-                        <div className="remember-btn">
-                            <input type="checkbox" />
-                            <span>记住我</span>
-                        </div>
-                        <div className="forget-btn">登录遇到问题?</div>
-                    </Remember>
-                    <Button
+                    <Button className="sign-up-button"
                         onClick={() => this.submit()}
                     >
-                        登录
+                        注册
                             </Button>
                     <span className="tip">{this.state.errorMsg}</span>
                 </Form>
                 <MoreSign>
-                    <h6>社交帐号登录</h6>
+                    <h6>社交帐号直接注册</h6>
                     <ul>
-                        <li>
-                            <a href>
-                                <i className="iconfont ic-weibo">&#xe63d;</i>
-                            </a>
-                        </li>
                         <li>
                             <a href>
                                 <i className="iconfont ic-wechat">&#xe659;</i>

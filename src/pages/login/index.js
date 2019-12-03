@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { LoginWrapper, LoginContent, InputBox, Form, Input, Button, Logo, Remember, MoreSign } from './style';
+import { LoginWrapper, LoginContent,Logo} from './style';
 import { Redirect } from 'react-router';
 import { LoginBox, RegisterBox } from './component'
 
