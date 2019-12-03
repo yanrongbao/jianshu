@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { LoginWrapper, LoginContent,Logo} from './style';
+import { LoginWrapper, LoginContent, Logo } from './style';
 import { Redirect } from 'react-router';
 import { LoginBox, RegisterBox } from './component'
 
@@ -11,7 +11,7 @@ class Login extends PureComponent {
             loginName: 'login',
         }
     }
-    render() {
+    render () {
         const { login } = this.props;
 
         if (!login) {
@@ -32,17 +32,18 @@ class Login extends PureComponent {
                 </LoginWrapper>
             );
         } else {
-            return <Redirect to="/" />;
+            console.log(login)
+            return <Redirect to="/index/" />;
         }
     }
-    handleLoginPage(loginName) {
+    handleLoginPage (loginName) {
         this.setState({
             loginName: loginName
         })
     }
 }
 const mapState = state => ({
-
+    login: state.getIn(['login', 'login'])
 });
 const mapDispatch = dispatch => ({
 

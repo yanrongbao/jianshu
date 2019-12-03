@@ -1,7 +1,8 @@
 import { fromJS } from 'immutable';
 import * as types from './actionTypes';
 const loginState = fromJS({
-    login: false
+    login: false,
+    isNameRepeat: true
 });
 
 export default (state = loginState, action) => {
@@ -10,6 +11,8 @@ export default (state = loginState, action) => {
             return state.set('login', action.value.code === 1 ? true : false);
         case types.LOGINOUT:
             return state.set('login', action.value);
+        case types.CHANGE_NAME_STATR:
+            return state.set('isNameRepeat', action.value)
         default:
             return state;
     }

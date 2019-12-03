@@ -1,4 +1,5 @@
-export const showMessage = ({type='info'}={})=>{
-    const node = document.createElement('div');
-    node.className = ''
+import { Message } from './message'
+
+export {
+    Message
 }

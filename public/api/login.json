@@ -1,4 +1,42 @@
 {
-    "success": true,
-    "data": true
+    "data": {
+        "formId": "b567b691bc194d7b801fa28651b6c972",
+        "pageId": "d2796196bbff42e7a66d110a0d269531",
+        "contentId": "ec28e80493d4472792deaf2c55327327",
+        "widgetList": [
+            {
+                "fieldId": "aa1346a170514c0ebdc2ae7e839c02a8",
+                "workType": 0,
+                "value": "aae81a813559d7c9521adc4ab8b490f6"
+            },
+            {
+                "fieldId": "2111f8b559da415daac10a7b68289fa8",
+                "workType": 0,
+                "value": "xx"
+            },
+            {
+                "fieldId": "0684bf04294048d68f96d7eb4d9688dd",
+                "workType": 0,
+                "value": "cc"
+            },
+            {
+                "fieldId": "29600af3c4f441c9963cbeee0cfb32f8",
+                "workType": 0,
+                "value": [
+                    {
+                        "uid": "vc-upload-1575344414854-2",
+                        "name": "分发wrapper.pdf",
+                        "type": "application/pdf",
+                        "size": 21464,
+                        "url": "permission/unit/bba1f521-1635-4471-9119-757edbb6d30b"
+                    }
+                ]
+            }
+        ],
+        "groupId": "83a18a9b5eef4abaa57f820da8b2b1b3",
+        "lineId": null,
+        "lineNum": 1,
+        "sort": 2
+    },
+    "success": true
 }

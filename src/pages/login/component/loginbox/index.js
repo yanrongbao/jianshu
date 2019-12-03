@@ -3,16 +3,16 @@ import { Form, InputBox, Input, Button, Remember, MoreSign } from '../../style';
 import { actionCreators } from '../../store';
 import { Validator } from 'utils/form/index';
 import { connect } from 'react-redux';
+import { Message } from 'utils/ui/index';
 class LoginBox extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
             validator: null,
-            errorMsg: ''
         }
     }
 
-    render() {
+    render () {
         return (
             <div>
                 <Form>
@@ -75,7 +75,7 @@ class LoginBox extends PureComponent {
             </div>
         )
     }
-    checkFromRules() {
+    checkFromRules () {
         const validator = new Validator();
         validator.add(this.username, [
             {
@@ -92,17 +92,17 @@ class LoginBox extends PureComponent {
         const errorMsg = validator.start();
         return errorMsg;
     }
-    submit() {
+    submit () {
         const errorMsg = this.checkFromRules();
         if (errorMsg) {
-            this.setState({
-                errorMsg: errorMsg
-            })
+            const message = new Message();
+            message.show({
+                type: 'warn',
+                text: errorMsg,
+                duration: 2000,    // 不会自动消失
+            });
             return false;
         } else {
-            this.setState({
-                errorMsg: ''
-            })
             this.props.loginUser(
                 this.username,
                 this.password
@@ -114,7 +114,7 @@ const mapState = state => ({
     login: state.getIn(['login', 'login'])
 });
 const mapDispatch = dispatch => ({
-    loginUser(accountElem, passwordElem) {
+    loginUser (accountElem, passwordElem) {
         dispatch(actionCreators.login(accountElem.value, passwordElem.value));
     }
 });

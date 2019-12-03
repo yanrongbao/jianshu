@@ -11,7 +11,8 @@ class RegisterBox extends PureComponent {
             errorMsg: ''
         }
     }
-    render() {
+    render () {
+        const { isNameRepeat } = this.props;
         return (
             <div>
                 <Form>
@@ -22,6 +23,7 @@ class RegisterBox extends PureComponent {
                             ref={input => {
                                 this.username = input;
                             }}
+                            onBlur={() => this.checkDuplicateName(this.username.value)}
                         />
                         <i className="iconfont">&#xe612;</i>
 
@@ -51,8 +53,8 @@ class RegisterBox extends PureComponent {
                     <Button className="sign-up-button"
                         onClick={() => this.submit()}
                     >
-                        注册
-                            </Button>
+                        {!isNameRepeat ? 'false' : 'true'}
+                    </Button>
                     <span className="tip">{this.state.errorMsg}</span>
                 </Form>
                 <MoreSign>
@@ -73,7 +75,7 @@ class RegisterBox extends PureComponent {
             </div>
         )
     }
-    checkFromRules() {
+    checkFromRules () {
         const validator = new Validator();
         validator.add(this.username, [
             {
@@ -90,7 +92,7 @@ class RegisterBox extends PureComponent {
         const errorMsg = validator.start();
         return errorMsg;
     }
-    submit() {
+    submit () {
         const errorMsg = this.checkFromRules();
         if (errorMsg) {
             this.setState({
@@ -107,13 +109,22 @@ class RegisterBox extends PureComponent {
             )
         }
     }
+    checkDuplicateName (name) {
+        if (name) {
+            this.props.checkUser(name)
+        }
+
+    }
 }
 const mapState = state => ({
-    login: state.getIn(['login', 'login'])
+    isNameRepeat: state.getIn(['login', 'isNameRepeat'])
 });
 const mapDispatch = dispatch => ({
-    loginUser(accountElem, passwordElem) {
+    loginUser (accountElem, passwordElem) {
         dispatch(actionCreators.login(accountElem.value, passwordElem.value));
+    },
+    checkUser (name) {
+        dispatch(actionCreators.checkUser(name));
     }
 });
 export default connect(
