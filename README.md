@@ -2,6 +2,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 个人使用React模仿简书网开发的  目前配合Koa提供的接口  
 
+## 一.登录首页
+1.开发message插件 提供提示功能
+2.使用策略模式开发表单验证功能
+
 ## Available Scripts
 
 In the project directory, you can run:
