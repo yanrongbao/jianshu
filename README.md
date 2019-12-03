@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+个人使用React模仿简书网开发的  目前配合Koa提供的接口  
+
 ## Available Scripts
 
 In the project directory, you can run:
