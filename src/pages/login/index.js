@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { LoginWrapper, LoginContent, Logo } from './style';
+import { LoginWrapper,Loginflex, LoginContent, Logo } from './style';
 import { Redirect } from 'react-router';
 import { LoginBox, RegisterBox } from './component'
 
@@ -20,6 +20,7 @@ class Login extends PureComponent {
                     <Logo>
                         <img alt="" src={require('statics/images/logo.png')} />
                     </Logo>
+                    <Loginflex>
                     <LoginContent>
                         <div className="title">
                             <span onClick={() => { this.handleLoginPage('login') }} className={this.state.loginName === 'login' ? 'active' : ''}>登录</span>
@@ -29,6 +30,8 @@ class Login extends PureComponent {
                         {this.state.loginName === 'login' ? <LoginBox /> : <RegisterBox />}
 
                     </LoginContent>
+                    </Loginflex>
+                    
                 </LoginWrapper>
             );
         } else {

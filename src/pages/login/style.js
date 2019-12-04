@@ -17,9 +17,15 @@ export const Logo = styled.div`
         width:100%;
     }
 `;
+export const Loginflex = styled.div`
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height:100%;
+`;
 export const LoginContent = styled.div`
     width: 400px;
-    margin: 100px auto;
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
@@ -74,6 +80,13 @@ i{
         border-bottom: none;
         border-radius: 4px 4px 0 0;
     }
+}
+&.no-radius{
+    input{
+        border-bottom: none;
+        border-radius: 0;
+    }
+   
 }
 `;
 export const Input = styled.input`
@@ -175,5 +188,24 @@ export const Button = styled.div`
     cursor:pointer;
     &.sign-up-button{
         background: #42c02e;
+    }
+`;
+export const Verfybutton = styled.button`
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 100px;
+    height: 36px;
+    font-size: 13px;
+    color: #fff;
+    background-color: #42c02e;
+    border-radius: 20px;
+    line-height: 36px;
+    text-align:center;
+    border:none;
+    cursor:pointer;
+    &:disabled{
+        opacity: .5;
+        pointer-events: none;
     }
 `;

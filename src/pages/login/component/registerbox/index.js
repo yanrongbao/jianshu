@@ -1,14 +1,15 @@
 import React, { PureComponent } from 'react';
-import { Form, InputBox, Input, Button, MoreSign } from '../../style';
+import { Form, InputBox, Input, Button, MoreSign,Verfybutton } from '../../style';
 import { actionCreators } from '../../store';
 import { Validator } from 'utils/form/index';
 import { connect } from 'react-redux';
+import { Message } from 'utils/ui/index';
 class RegisterBox extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
             validator: null,
-            errorMsg: ''
+            isSendMsg:false
         }
     }
     render () {
@@ -28,16 +29,27 @@ class RegisterBox extends PureComponent {
                         <i className="iconfont">&#xe612;</i>
 
                     </InputBox>
-                    <InputBox className="restyle">
+                    <InputBox className="restyle no-radius">
                         <Input
-                            name="password"
-                            type="password"
+                            name="phone"
                             placeholder="手机号"
+                            onInput={() => this.checkPhone(this.phone.value)}
                             ref={input => {
-                                this.password = input;
+                                this.phone = input;
                             }}
                         />
                         <i className="iconfont">&#xe6c1;</i>
+                    </InputBox>
+                    <InputBox className="restyle no-radius">
+                        <Input
+                            name="verificationCode"
+                            placeholder="手机验证码"
+                            ref={input => {
+                                this.verificationCode = input;
+                            }}
+                        />
+                        <i className="iconfont">&#xe6c1;</i>
+                        <Verfybutton disabled={!this.state.isSendMsg}>发送验证码</Verfybutton>
                     </InputBox>
                     <InputBox>
                         <Input
@@ -83,6 +95,12 @@ class RegisterBox extends PureComponent {
                 errorMsg: '用户名不能为空'
             }
         ])
+        validator.add(this.phone, [
+            {
+                strategy: 'isMobile',
+                errorMsg: '请输入正确手机号'
+            }
+        ])
         validator.add(this.password, [
             {
                 strategy: 'isNonEmpty',
@@ -95,17 +113,16 @@ class RegisterBox extends PureComponent {
     submit () {
         const errorMsg = this.checkFromRules();
         if (errorMsg) {
-            this.setState({
-                errorMsg: errorMsg
-            })
-            return false;
+            const message = new Message();
+            message.show({ 
+                type: 'warn',
+                text: errorMsg,
+                duration: 2000,    // 不会自动消失
+            });
         } else {
-            this.setState({
-                errorMsg: ''
-            })
             this.props.loginUser(
                 this.username,
-                this.password
+                this.password 
             )
         }
     }
@@ -114,6 +131,21 @@ class RegisterBox extends PureComponent {
             this.props.checkUser(name)
         }
 
+    }
+    checkPhone(value){
+        if(value.length===11){
+            const errorMsg=Validator.check(this.phone,[
+                {
+                    strategy: 'isMobile',
+                    errorMsg: '请输入正确手机号'
+                }
+            ])
+            if(!errorMsg){
+                this.setState({
+                    isSendMsg:true
+                })
+            }
+        }
     }
 }
 const mapState = state => ({

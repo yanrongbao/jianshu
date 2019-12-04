@@ -10,7 +10,7 @@ const strategies = {
         }
     },
     isMobile(value, errorMsg) { // 手机号码格式
-        if (!/(^1[3|5|8][0-9]{9}$)/.test(value)) {
+        if (!/(^1[3|5|8|7][0-9]{9}$)/.test(value)) {
             return errorMsg;
         }
     }
@@ -20,7 +20,7 @@ export class Validator {
     constructor() {
         this.cache = []; // 保存校验规则
     }
-    add(dom, rules) {
+     add(dom, rules) {
         const self = this;
         for (let i = 0; i < rules.length; i++) {
             (function (rule) {
@@ -39,6 +39,25 @@ export class Validator {
     start() {
         for (let i = 0; i < this.cache.length; i++) {
             let errorMsg = this.cache[i]();
+            if (errorMsg) {
+                return errorMsg;
+            }
+        }
+    }
+    static check(dom,rules){
+        const cache = [];
+        for (let i = 0; i < rules.length; i++) {
+                const strategyAry = rules[i].strategy.split(':');
+                const errorMsg = rules[i].errorMsg;
+                cache.push(()=>{
+                    const strategy = strategyAry.shift();
+                    strategyAry.unshift(dom.value);
+                    strategyAry.push(errorMsg);
+                    return strategies[strategy].apply(dom,strategyAry)
+                })
+            }
+        for (let i = 0; i < cache.length; i++) {
+            let errorMsg = cache[i]();
             if (errorMsg) {
                 return errorMsg;
             }
