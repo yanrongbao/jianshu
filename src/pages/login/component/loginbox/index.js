@@ -1,17 +1,19 @@
 import React, { PureComponent } from 'react';
 import { Form, InputBox, Input, Button, Remember, MoreSign } from '../../style';
 import { actionCreators } from '../../store';
-import { Validator } from 'utils/form/index';
 import { connect } from 'react-redux';
-import { Message } from 'utils/ui/index';
+import { Message } from 'utils/ui';
+import { Validator } from 'utils/form';
+import { throttle } from 'utils/tip';
+import { stopDefault } from 'utils/dom';
 class LoginBox extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
             validator: null,
         }
+        this.submitThrottled = throttle(this.submit, 500)
     }
-
     render () {
         return (
             <div>
@@ -46,7 +48,10 @@ class LoginBox extends PureComponent {
                         <div className="forget-btn">登录遇到问题?</div>
                     </Remember>
                     <Button
-                        onClick={() => this.submit()}
+                        onClick={(e) => {
+                            stopDefault(e);
+                            this.submitThrottled()
+                        }}
                     >
                         登录
                             </Button>
@@ -103,10 +108,8 @@ class LoginBox extends PureComponent {
             });
             return false;
         } else {
-            this.props.loginUser(
-                this.username,
-                this.password
-            )
+            this.props.loginUser(this.username.value,
+                this.password.value)
         }
     }
 }
@@ -114,8 +117,8 @@ const mapState = state => ({
     login: state.getIn(['login', 'login'])
 });
 const mapDispatch = dispatch => ({
-    loginUser (accountElem, passwordElem) {
-        dispatch(actionCreators.login(accountElem.value, passwordElem.value));
+    loginUser (username, password) {
+        dispatch(actionCreators.login(username, password));
     }
 });
 export default connect(

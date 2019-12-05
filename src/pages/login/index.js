@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { LoginWrapper,Loginflex, LoginContent, Logo } from './style';
+import { LoginWrapper, Loginflex, LoginContent, Logo } from './style';
 import { Redirect } from 'react-router';
 import { LoginBox, RegisterBox } from './component'
 
@@ -21,21 +21,20 @@ class Login extends PureComponent {
                         <img alt="" src={require('statics/images/logo.png')} />
                     </Logo>
                     <Loginflex>
-                    <LoginContent>
-                        <div className="title">
-                            <span onClick={() => { this.handleLoginPage('login') }} className={this.state.loginName === 'login' ? 'active' : ''}>登录</span>
-                            <b>·</b>
-                            <span onClick={() => { this.handleLoginPage('register') }} className={this.state.loginName === 'register' ? 'active' : ''}>注册</span>
-                        </div>
-                        {this.state.loginName === 'login' ? <LoginBox /> : <RegisterBox />}
+                        <LoginContent>
+                            <div className="title">
+                                <span onClick={() => { this.handleLoginPage('login') }} className={this.state.loginName === 'login' ? 'active' : ''}>登录</span>
+                                <b>·</b>
+                                <span onClick={() => { this.handleLoginPage('register') }} className={this.state.loginName === 'register' ? 'active' : ''}>注册</span>
+                            </div>
+                            {this.state.loginName === 'login' ? <LoginBox /> : <RegisterBox />}
 
-                    </LoginContent>
+                        </LoginContent>
                     </Loginflex>
-                    
+
                 </LoginWrapper>
             );
         } else {
-            console.log(login)
             return <Redirect to="/index/" />;
         }
     }

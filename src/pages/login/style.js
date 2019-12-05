@@ -68,7 +68,7 @@ position: relative;
 export const InputBox = styled.div`
 position: relative;
 width: 100%;
-i{
+>i{
     position: absolute;
     top: 14px;
     left: 10px;
@@ -174,7 +174,7 @@ ul{
     }
 }
 `;
-export const Button = styled.div`
+export const Button = styled.button`
     margin-top: 20px;
     width: 100%;
     padding: 11px 18px;
@@ -204,8 +204,47 @@ export const Verfybutton = styled.button`
     text-align:center;
     border:none;
     cursor:pointer;
-    &:disabled{
-        opacity: .5;
-        pointer-events: none;
+`;
+export const ToolTip = styled.div`
+    font-size: 14px;
+    position: absolute;
+    z-index:10;
+    opacity:.9;
+    transform: translate(100%,-50%);
+    top: 50%;
+    right: -8px;
+    .tooltip-arrow {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        left: 0;
+        margin-top: -5px;
+        border-width: 5px 5px 5px 0;
+        top: 50%;
+        &.tooltip-arrow-border {
+            border-right-color: #ea6f5a;
+            left:-5px;
+        }
+        &.tooltip-arrow-bg{
+            border-right-color: #fff;
+            left:-3px;
+        }
+    }
+    .tooltip-inner {
+        color: #333;
+        border-radius: 4px;
+        border: 1px solid #ea6f5a;
+        background-color: #fff;
+        padding: 5px 10px;
+        display: flex;
+        align-items: center;
+        color:#333;
+        i{
+            margin-right: 5px;
+            font-size: 20px;
+            color: #ea6f5a;
+        }
     }
 `;

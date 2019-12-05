@@ -1,5 +1,8 @@
 import service from 'utils/fetch';
 
-export const requireCheckUser = (name) => {
-    return service.get('/apis/login/checkname?name=' + name)
+export const requireLoginApi = (name, password) => {
+    return service.post('/apis/login', {
+        name,
+        password
+    })
 }

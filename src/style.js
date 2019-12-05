@@ -49,4 +49,8 @@ export const GlobalStyle = createGlobalStyle`
     a{
         text-decoration: none;
     }
+    button:disabled{
+        opacity: .5;
+        pointer-events: none;
+    }
 `;
