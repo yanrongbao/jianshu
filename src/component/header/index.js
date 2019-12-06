@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
-import { actionCreators as loginActionCreators } from '../../pages/login/store';
+import { actionCreators as loginActionCreators } from 'views/pages/login/store';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 import { domRotate360deg } from 'utils/dom';
@@ -22,7 +22,7 @@ import {
 } from './style';
 const betaImg = require('../../statics/images/beta.png')
 class Header extends Component {
-    render() {
+    render () {
         const {
             focused,
             handleInputFocus,
@@ -97,7 +97,7 @@ class Header extends Component {
         );
     }
 
-    getListArea() {
+    getListArea () {
         const {
             focused,
             list,
@@ -164,20 +164,20 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
     return {
-        handleInputFocus(list) {
+        handleInputFocus (list) {
             (list.size === 0) && dispatch(actionCreators.getList());
             dispatch(actionCreators.input_focus_on());
         },
-        handleInputBlur() {
+        handleInputBlur () {
             dispatch(actionCreators.input_focus_off());
         },
-        handleMouseEnter() {
+        handleMouseEnter () {
             dispatch(actionCreators.mouse_enter());
         },
-        handleMouseLeave() {
+        handleMouseLeave () {
             dispatch(actionCreators.mouse_leave());
         },
-        handlePageChange(page, totalPage, spinIcon) {
+        handlePageChange (page, totalPage, spinIcon) {
             domRotate360deg(spinIcon);
             if (page < totalPage) {
                 dispatch(actionCreators.page_change(page + 1));
@@ -185,7 +185,7 @@ const mapDispatchToProps = dispatch => {
                 dispatch(actionCreators.page_change(1));
             }
         },
-        loginOut() {
+        loginOut () {
             dispatch(loginActionCreators.loginOut());
         }
     };

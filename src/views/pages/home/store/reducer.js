@@ -1,9 +1,9 @@
 import { fromJS } from 'immutable';
 import * as types from './actionTypes';
-import JSHY from '../../../statics/jshy.png';
-import JSBQ from '../../../statics/jsbq.png';
-import YXLZ from '../../../statics/yxlz.png';
-import JSDXT from '../../../statics/jsdxt.png';
+import JSHY from 'statics/jshy.png';
+import JSBQ from 'statics/jsbq.png';
+import YXLZ from 'statics/yxlz.png';
+import JSDXT from 'statics/jsdxt.png';
 const homeState = fromJS({
     topicList: [],
     articleList: [],

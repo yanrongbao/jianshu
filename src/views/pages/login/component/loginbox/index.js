@@ -101,6 +101,7 @@ class LoginBox extends PureComponent {
         const errorMsg = this.checkFromRules();
         if (errorMsg) {
             const message = new Message();
+            console.log(message)
             message.show({
                 type: 'warn',
                 text: errorMsg,
