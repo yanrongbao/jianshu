@@ -1,0 +1,156 @@
+#at-message-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .at-message {
+        margin: 10px 0;
+        padding: 15px 15px 15px 20px;
+        min-width: 300px;
+        box-shadow: 0 0 10px 0 #ccc;
+        background-color: #edf2fc;
+        border: 1px solid #ebeef5;
+        font-size: 14px;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        /* 增加一个过渡属性，当message元素的高度和margin变化时候将会有一个过渡动画 */
+        transition: height 0.2s ease-in-out, margin 0.2s ease-in-out;
+        .at-text {
+            color: #909399;
+            padding: 0 20px 0 5px;
+            flex: 1;
+        }
+        .at-close  {
+            cursor: pointer;
+            color: #c0c4cc;
+        }
+        &.at-message--info {
+            .at-icon-info, .at-text {
+                color: #909399;
+            }
+        }
+        &.at-message--success {
+            background-color: #f0f9eb;
+            border-color: #e1f3d8;
+            .at-icon-success, .at-text {
+                color: #67c23a;
+            }
+        }
+        &.at-message--warn {
+            background-color: #fdf6ec;
+            border-color: #faecd8;
+        .at-icon-warn, .at-text {
+                color: #e6a23c;
+            }
+        }
+        &.at-message--error {
+            background-color: #fef0f0;
+            border-color: #fde2e2;
+            .at-icon-error, .at-text {
+                color: #f56c6c;
+            }
+        }
+    }
+    .at-message.move-in {
+        animation: message-move-in 0.3s ease-in-out;
+    }
+    .at-message.move-out {
+        animation: message-move-out 0.3s ease-in-out;
+        /* 让动画结束后保持结束状态 */
+        animation-fill-mode: forwards;
+    }
+}
+@-webkit-keyframes message-move-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-moz-keyframes message-move-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-ms-keyframes message-move-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-o-keyframes message-move-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes message-move-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes message-move-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+@-moz-keyframes message-move-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+@-ms-keyframes message-move-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+@-o-keyframes message-move-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+@keyframes message-move-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}

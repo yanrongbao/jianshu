@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Header from 'component/header';
 import { Route, Switch } from 'react-router-dom';
-// import { integrateRoutes } from 'router/getRoutes';
 
 class Layout extends PureComponent {
     render () {

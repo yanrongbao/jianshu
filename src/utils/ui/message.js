@@ -1,4 +1,4 @@
-import './message.styl';
+import './message.less';
 export class Message {
     constructor() {
         const containerId = 'at-message-container';

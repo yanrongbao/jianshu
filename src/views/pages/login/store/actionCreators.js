@@ -14,9 +14,9 @@ export const login = (name, password) => {
         requireLoginApi(name, password).then(resp => {
             if (resp.success === true) {
                 dispatch(changeLogin(resp));
+                localStorage.setItem('TOKEN', resp.data[0]);
             } else {
                 const message = new Message();
-                console.log(resp)
                 message.show({
                     type: 'error',
                     text: resp.msg,

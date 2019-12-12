@@ -19,3 +19,30 @@ export const throttle = (fn, interval = 500) => {
         }, interval)
     }
 }
+export class pagination {
+    constructor(onChange, onShowSizeChange) {
+        this.onChange = onChange;
+        this.onShowSizeChange = onShowSizeChange;
+        this.pageSize = 10;
+        this.page = 1;
+        this.total = 56;
+        this.pageSizeOptions = ['10', '20', '30', '40'];
+        this.showSizeChanger = true;
+        this.showQuickJumper = true;
+
+    }
+    getPageSize () {
+        return {
+            page: this.page,
+            pageSize: this.pageSize
+        }
+    }
+    handlePageChange (page, pageSize) {
+        this.pageSize = pageSize;
+        this.page = page;
+        return {
+            page,
+            pageSize
+        }
+    }
+}

@@ -31,7 +31,14 @@ const routes = [
     {
         path: '/admin',
         component: lazy(() => import('views/admin/layout')),
-        exact: true
+        exact: false,
+        route: [
+            {
+                path: '/admin/user',
+                component: lazy(() => import('views/admin/user')),
+                exact: true
+            },
+        ]
     },
 ]
 export default routes;
