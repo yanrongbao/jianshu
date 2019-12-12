@@ -6,3 +6,7 @@ export const requireLoginApi = (name, password) => {
         password
     })
 }
+
+export const requireLogoutApi = () => {
+    return service.get('/apis/logout')
+}

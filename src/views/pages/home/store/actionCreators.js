@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as types from './actionTypes';
 import { fromJS } from 'immutable';
-import { requireWriteList } from 'apis/home'
+import { requireWriteList } from 'apis/pages/home'
 const changeHomeData = result => ({
     type: types.CHANGE_HOME_DATA,
     topicList: result.topicList,

@@ -5,7 +5,7 @@ import { Validator } from 'utils/form/index';
 import { connect } from 'react-redux';
 import { Message } from 'utils/ui/index';
 import { stopDefault, countdownEvent } from 'utils/dom';
-import { requiteCreateUserApi, requireCheckUserApi } from 'apis/user';
+import { requiteCreateUserApi, requireCheckUserApi } from 'apis/pages/user';
 class RegisterBox extends PureComponent {
     constructor(props) {
         super(props);

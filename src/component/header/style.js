@@ -24,6 +24,7 @@ export const Nav = styled.div`
     height: 100%;
     margin: 0 auto;
 `;
+export const isLoginDiv = styled.div``;
 
 export const NavItem = styled.div`
     line-height: 56px;
@@ -31,6 +32,7 @@ export const NavItem = styled.div`
     padding: 0 15px;
     cursor: pointer;
     color: #333;
+    position:relative;
     i{
         font-size:20px;
         margin-right: 5px;
@@ -53,7 +55,40 @@ export const NavItem = styled.div`
     }
     .beta-img{
         height:25px;
-
+    }
+    .user{
+        width:40px;
+        height:40px;
+        img{
+            width:100%;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            height:100%;
+        }
+    }
+    &.user-box{
+        display:flex;
+        height:100%;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        position:relative;
+        padding-right: 20px;
+        &:hover{
+            background-color: #f5f5f5;
+        }
+        &:hover>.dropdown-menu{
+             visibility: visible;
+        }
+        &:before{
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 6px solid #999;
+        }
     }
 `;
 
@@ -170,5 +205,42 @@ export const Button = styled.div`
     &.writting {
         background: #ec6149;
         color: #fff;
+    }
+`;
+export const DropdownUl = styled.ul`
+    border-radius: 0 0 4px 4px;
+    margin-top: 0;
+    border-color: transparent;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    position: absolute;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+    background:#fff;
+    z-index:100;
+    top: 100%;
+    left: 0;
+    visibility: hidden;
+    transition: all .5s linear;
+    &:hover{
+        // display:block;
+    }
+`;
+export const DropdownLi = styled.li`
+    padding: 10px 20px;
+    line-height: 30px;
+    color: #333;
+    display:flex;
+    align-items:center;
+    i{
+        margin-right: 15px;
+        font-size: 18px;
+        color: #ea6f5a;
+    }
+    &:hover{
+        background-color: #f5f5f5;
     }
 `;

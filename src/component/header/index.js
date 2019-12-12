@@ -5,6 +5,7 @@ import { actionCreators as loginActionCreators } from 'views/pages/login/store';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 import { domRotate360deg } from 'utils/dom';
+import DropdownMenu from './component/dropdownmenu'
 import {
     HeaderWrapper,
     Logo,
@@ -18,9 +19,9 @@ import {
     SearchInfoList,
     SearchInfoSticth,
     SearchInfoTtile,
-    SearchInfoItem
+    SearchInfoItem,
+    isLoginDiv
 } from './style';
-const betaImg = require('../../statics/images/beta.png')
 class Header extends Component {
     render () {
         const {
@@ -29,7 +30,6 @@ class Header extends Component {
             handleInputBlur,
             login,
             list,
-            loginOut
         } = this.props;
         return (
             <HeaderWrapper>
@@ -37,15 +37,25 @@ class Header extends Component {
                     <Logo />
                 </Link>
                 <Nav>
-                    <NavItem className="left active">
-                        <i className="iconfont">&#xe8d0;</i>
-                        发现
-                    </NavItem>
-                    <NavItem className="left"><i className="iconfont">&#xe614;</i>关注</NavItem>
-                    <NavItem className="left"><i className="iconfont">&#xe634;</i>消息</NavItem>
+                    {login ?
+                        <isLoginDiv>
+                            <NavItem className="left active"><i className="iconfont">&#xe8d0;</i>发现</NavItem>
+                            <NavItem className="left"><i className="iconfont">&#xe614;</i>关注</NavItem>
+                            <NavItem className="left"><i className="iconfont">&#xe634;</i>消息</NavItem>
+                        </isLoginDiv> :
+                        <isLoginDiv>
+                            <NavItem className="left active"><i className="iconfont iconzhinan"></i>首页</NavItem>
+                            <NavItem className="left"><i className="iconfont iconshoujihao"></i>下载App</NavItem>
+                        </isLoginDiv>
+                    }
+
+
                     {login ? (
-                        <NavItem className="right" onClick={loginOut}>
-                            退出
+                        <NavItem className="right user-box flex">
+                            <div className="user">
+                                <img alt='' src={require('statics/images/touxiang.jpg')} />
+                            </div>
+                            <DropdownMenu></DropdownMenu>
                         </NavItem>
                     ) : (
                             <Link to="/login">
@@ -54,7 +64,7 @@ class Header extends Component {
                         )}
                     <NavItem className="right beta-img-box">
                         <img className="beta-img"
-                            src={betaImg}
+                            src={require('statics/images/beta.png')}
                             alt="" />
                     </NavItem>
                     <NavItem className="right">
@@ -91,7 +101,8 @@ class Header extends Component {
                             写文章
                         </Button>
                     </Link>
-                    <Button className="reg">注册</Button>
+                    {!login ? <Button className="reg">注册</Button> : ''}
+
                 </Additon>
             </HeaderWrapper>
         );
@@ -159,7 +170,7 @@ const mapStateToProps = state => {
         page: state.getIn(['header', 'page']),
         totalPage: state.getIn(['header', 'totalPage']),
         mouseIn: state.getIn(['header', 'mouseIn']),
-        login: state.getIn(['login', 'login'])
+        login: state.getIn(['login', 'login']),
     };
 };
 const mapDispatchToProps = dispatch => {
@@ -184,9 +195,6 @@ const mapDispatchToProps = dispatch => {
             } else {
                 dispatch(actionCreators.page_change(1));
             }
-        },
-        loginOut () {
-            dispatch(loginActionCreators.loginOut());
         }
     };
 };
