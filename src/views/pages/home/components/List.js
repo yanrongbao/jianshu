@@ -4,42 +4,45 @@ import { ListItem, ListInfo, ListMore } from '../style';
 import { actionCreators } from '../store';
 import { Link } from 'react-router-dom';
 class List extends PureComponent {
-    render() {
+    render () {
         const { articleList, getMoreList, articlePage } = this.props;
         return (
             <div>
                 {articleList.map((item, index) => {
                     return (
-                        <Link key={index} to={'/index/detail/' + item.get('id')}>
-                            <ListItem>
-                                <ListInfo>
+
+                        <ListItem>
+                            <ListInfo>
+                                <Link key={index} to={'/index/detail/' + item.get('id')}>
                                     <h3 className="title">
                                         {item.get('title')}
                                     </h3>
-                                    <p className="desc">{item.get('desc')}</p>
-                                    <div className="toolbar">
-                                        <span className="meta">
-                                            <i className="iconfont">&#xeaee;</i>
-                                            {item.get('number')}
-                                        </span>
-                                        <span className="nickname">
-                                            {item.get('subTitle')}
-                                        </span>
-                                        <span className="ic-list-comments">
-                                            <i className="iconfont">&#xe62e;</i>{item.get('comment')}
-                                        </span>
-                                        <span className="">
-                                            <i className="iconfont">&#xe663;</i>{item.get('like')}
-                                        </span>
-                                    </div>
-                                </ListInfo>
-                                <img
-                                    className="list-pic"
-                                    src={item.get('imgUrl')}
-                                    alt=""
-                                />
-                            </ListItem>
-                        </Link>
+
+                                </Link>
+                                <p className="desc">{item.get('desc')}</p>
+                                <div className="toolbar">
+                                    <span className="meta">
+                                        <i className="iconfont">&#xeaee;</i>
+                                        {item.get('writing_words')}
+                                    </span>
+                                    <span className="nickname">
+                                        {item.get('author')}
+                                    </span>
+                                    <span className="ic-list-comments">
+                                        <i className="iconfont">&#xe62e;</i>{item.get('comments')}
+                                    </span>
+                                    <span className="">
+                                        <i className="iconfont">&#xe663;</i>{item.get('like')}
+                                    </span>
+                                </div>
+                            </ListInfo>
+                            {item.get('desc_url') ? <img
+                                className="list-pic"
+                                src={item.get('desc_url')}
+                                alt=""
+                            /> : ''}
+
+                        </ListItem>
                     );
                 })}
                 <ListMore onClick={() => getMoreList(articlePage)}>
@@ -56,7 +59,7 @@ const mapState = state => {
     };
 };
 const mapDispatch = dispatch => ({
-    getMoreList(articlePage) {
+    getMoreList (articlePage) {
         dispatch(actionCreators.getMoreList(articlePage));
     }
 });

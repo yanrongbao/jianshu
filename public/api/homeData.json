@@ -1,56 +1,58 @@
 {
     "success": true,
     "data": {
-        "topicList": [{
+        "topicList": [
+            {
                 "id": 1,
                 "title": "社会热点",
-                "imgUrl": "https://upload.jianshu.io/admin_banners/web_images/4676/973faa095266d5335fd5a072e6cfc14dcaf08493.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
+                "desc_url": "https://upload.jianshu.io/admin_banners/web_images/4676/973faa095266d5335fd5a072e6cfc14dcaf08493.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
             },
             {
                 "id": 2,
                 "title": "手绘",
-                "imgUrl": "https://upload.jianshu.io/admin_banners/web_images/4676/973faa095266d5335fd5a072e6cfc14dcaf08493.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
+                "desc_url": "https://upload.jianshu.io/admin_banners/web_images/4676/973faa095266d5335fd5a072e6cfc14dcaf08493.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
             }
         ],
-        "articleList": [{
+        "articleList": [
+            {
                 "id": 1,
                 "title": "这部堪称国外的《色戒》 权游的梅姨比汤唯更加大胆",
                 "desc": "作为一个半道出家的权游粉丝在短时间内刷了七季之后 发现权游里面虽然女性角色众多 但单论颜值好像都不是很出众 当然在巡视了众多权游美女排行榜单后美女排行榜单后",
-                "imgUrl": "https://upload-images.jianshu.io/upload_images/19768675-279c3ad6a42e77a2?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
-                "number":99.2,
-                "subTitle":"陆郎电影慢谈",
-                "comment":50,
-                "like":854
+                "desc_url": "https://upload-images.jianshu.io/upload_images/19768675-279c3ad6a42e77a2?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
+                "writing_words": 99.2,
+                "author": "陆郎电影慢谈",
+                "comments": 50,
+                "like": 854
             },
             {
                 "id": 2,
                 "title": "2019第38周：我喜欢字写在纸上的感觉",
                 "desc": "中秋节去厦门耍了几天，在逛十点书店时，偶然看到了“趁早”家的每日计划本。想起来自己的日程手帐又是将近一周没记录了。当时内心就暗暗发誓，回去后一定",
-                "imgUrl": "https://upload-images.jianshu.io/upload_images/10118246-4fb9722fb1ca19e2?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
-                "number": 79.3 ,
-                "subTitle":"简尔读书",
-                "comment":33,
-                "like":416
+                "desc_url": "https://upload-images.jianshu.io/upload_images/10118246-4fb9722fb1ca19e2?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
+                "writing_words": 79.3,
+                "author": "简尔读书",
+                "comments": 33,
+                "like": 416
             },
-
             {
                 "id": 3,
                 "title": "读书，让我一天赚了800块",
                 "desc": "宋慧乔结婚一年多以来鲜有新闻流出，大多时间里，她都是和宋仲基两个人旅行，待在一起享受二人世界，事业上也都慢了下来。然而最近，宋慧乔结束了假期，",
-                "imgUrl": "https://upload-images.jianshu.io/upload_images/19639313-2ee76de083687397.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
-                "number":19.5,
-                "subTitle":"東方迷冠",
-                "comment":15,
-                "like":70
-            }, {
+                "desc_url": "https://upload-images.jianshu.io/upload_images/19639313-2ee76de083687397.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
+                "writing_words": 19.5,
+                "author": "東方迷冠",
+                "comments": 15,
+                "like": 70
+            },
+            {
                 "id": 4,
                 "title": "一月读完4本书，走上读书变现之路",
                 "desc": "宋慧乔结婚一年多以来鲜有新闻流出，大多时间里，她都是和宋仲基两个人旅行，待在一起享受二人世界，事业上也都慢了下来。然而最近，宋慧乔结束了假期，",
-                "imgUrl": "https://upload-images.jianshu.io/upload_images/2700682-ae919b23cb9818d0.JPG?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
-                "number":33.8,
-                "subTitle":"暗渡undo",
-                "comment":9,
-                "like":147
+                "desc_url": "https://upload-images.jianshu.io/upload_images/2700682-ae919b23cb9818d0.JPG?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
+                "writing_words": 33.8,
+                "author": "暗渡undo",
+                "comments": 9,
+                "like": 147
             }
         ]
     }

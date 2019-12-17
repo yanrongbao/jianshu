@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Header from 'component/header';
 import { Route, Switch } from 'react-router-dom';
+import RouterGuard from 'router/routerGuard';
 
 class Layout extends PureComponent {
     render () {
@@ -29,7 +30,7 @@ function RouteWithSubRoutes (route) {
         <Route
             path={route.path}
             render={props => (
-                <route.component {...props} routes={route.routes} />
+                <RouterGuard {...props} router={route} />
             )}
         />
     );

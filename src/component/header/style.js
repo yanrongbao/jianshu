@@ -24,7 +24,7 @@ export const Nav = styled.div`
     height: 100%;
     margin: 0 auto;
 `;
-export const isLoginDiv = styled.div``;
+export const IsLoginDiv = styled.div``;
 
 export const NavItem = styled.div`
     line-height: 56px;

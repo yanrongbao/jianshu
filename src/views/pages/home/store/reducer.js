@@ -21,7 +21,6 @@ const homeState = fromJS({
 });
 const changeHomeData = (state, action) => {
     return state.merge({
-        topicList: fromJS(action.topicList),
         articleList: fromJS(action.articleList)
     });
 };

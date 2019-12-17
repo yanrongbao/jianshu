@@ -7,7 +7,7 @@ import {
 import { actionCreators as loginActionCreators } from 'views/pages/login/store';
 class DropdownMenu extends Component {
     render () {
-        const { userTipLists, loginOut } = this.props;
+        const { userTipLists, logout } = this.props;
         return (
             <DropdownUl className="dropdown-menu">
                 {userTipLists.map(item => {
@@ -18,7 +18,7 @@ class DropdownMenu extends Component {
                         </DropdownLi>
                     )
                 })}
-                <DropdownLi onClick={() => loginOut()}>
+                <DropdownLi onClick={() => logout()}>
                     <i className={`iconfont iconai-out`}></i>
                     <span>退出</span>
                 </DropdownLi>
@@ -34,12 +34,12 @@ const mapStateToProps = state => {
 };
 const mapAction = dispatch => {
     return {
-        loginOut () {
-            dispatch(loginActionCreators.loginOut());
+        logout () {
+            dispatch(loginActionCreators.logout());
         }
     }
 }
 export default connect(
     mapStateToProps,
-    null
+    mapAction
 )(DropdownMenu);

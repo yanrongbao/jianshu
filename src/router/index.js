@@ -1,24 +1,18 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import routes from './routers';
+import routes from './routers';//路由配置文件
+import RouterGuard from './routerGuard';//路由守卫文件
 export default () => (
     <Router>
         {
             routes.map((router, i) => {
-                if (router.exact) {
-                    return <Suspense key={i} fallback={<div>Loading</div>}>
-                        <Route exact path={router.path} render={props => (
-                            <router.component {...props} routes={router.route} />
-                        )} />
-                    </Suspense>
-                } else {
-                    return <Suspense key={i} fallback={<div>Loading11</div>}>
-                        <Route path={router.path} render={props => (
-                            <router.component {...props} routes={router.route} />
-                        )} />
-                    </Suspense>
-                }
+                return <Suspense key={i} fallback={<div>Loading</div>}>
+                    <Route exact={router.exact} path={router.path} render={props => (
+                        <RouterGuard {...props} router={router} />
+                    )} />
+                </Suspense>
             })
         }
     </Router>
 )
+

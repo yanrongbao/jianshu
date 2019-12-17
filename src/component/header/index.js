@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
-import { actionCreators as loginActionCreators } from 'views/pages/login/store';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 import { domRotate360deg } from 'utils/dom';
@@ -20,7 +19,7 @@ import {
     SearchInfoSticth,
     SearchInfoTtile,
     SearchInfoItem,
-    isLoginDiv
+    IsLoginDiv
 } from './style';
 class Header extends Component {
     render () {
@@ -30,6 +29,7 @@ class Header extends Component {
             handleInputBlur,
             login,
             list,
+            userInfo
         } = this.props;
         return (
             <HeaderWrapper>
@@ -38,22 +38,22 @@ class Header extends Component {
                 </Link>
                 <Nav>
                     {login ?
-                        <isLoginDiv>
+                        <IsLoginDiv>
                             <NavItem className="left active"><i className="iconfont">&#xe8d0;</i>发现</NavItem>
                             <NavItem className="left"><i className="iconfont">&#xe614;</i>关注</NavItem>
                             <NavItem className="left"><i className="iconfont">&#xe634;</i>消息</NavItem>
-                        </isLoginDiv> :
-                        <isLoginDiv>
+                        </IsLoginDiv> :
+                        <IsLoginDiv>
                             <NavItem className="left active"><i className="iconfont iconzhinan"></i>首页</NavItem>
                             <NavItem className="left"><i className="iconfont iconshoujihao"></i>下载App</NavItem>
-                        </isLoginDiv>
+                        </IsLoginDiv>
                     }
 
 
                     {login ? (
                         <NavItem className="right user-box flex">
                             <div className="user">
-                                <img alt='' src={require('statics/images/touxiang.jpg')} />
+                                <img alt='' src={userInfo.avatar_url} />
                             </div>
                             <DropdownMenu></DropdownMenu>
                         </NavItem>
@@ -171,6 +171,7 @@ const mapStateToProps = state => {
         totalPage: state.getIn(['header', 'totalPage']),
         mouseIn: state.getIn(['header', 'mouseIn']),
         login: state.getIn(['login', 'login']),
+        userInfo: state.getIn(['login', 'userInfo']),
     };
 };
 const mapDispatchToProps = dispatch => {
