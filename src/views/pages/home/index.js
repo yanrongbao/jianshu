@@ -31,7 +31,6 @@ class Home extends PureComponent {
         );
     }
     componentDidMount () {
-        this.props.changeHomeData();
         this.bindEvent();
     }
     componentWillUnmount () {
@@ -48,9 +47,6 @@ const mapState = state => ({
     showScroll: state.getIn(['home', 'showScroll'])
 });
 const mapDispatch = dispatch => ({
-    changeHomeData (action) {
-        dispatch(actionCreators.getHomeInfo());
-    },
     changeScrollTopShow () {
         let top = document.documentElement.scrollTop;
         if (top > 400) {

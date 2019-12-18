@@ -10,9 +10,9 @@ class DropdownMenu extends Component {
         const { userTipLists, logout } = this.props;
         return (
             <DropdownUl className="dropdown-menu">
-                {userTipLists.map(item => {
+                {userTipLists.map((item, index) => {
                     return (
-                        <DropdownLi>
+                        <DropdownLi key={index}>
                             <i className={`iconfont ${item.get('iconClass')}`}></i>
                             <span>{item.get('name')}</span>
                         </DropdownLi>

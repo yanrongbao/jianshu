@@ -134,7 +134,7 @@ export const ListMore = styled.div`
 `;
 export const BackTop = styled.div`
     position: fixed;
-    right: 100px;
+    right: 40px;
     bottom: 30px;
     width: 60px;
     height: 60px;

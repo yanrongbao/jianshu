@@ -1,21 +1,28 @@
 import * as types from './actionTypes';
 import { Message } from 'utils/ui/index';
 import { requireLoginApi } from 'apis/pages/login';
-const changeLogin = result => ({
-    type: types.CHANGE_LOGIN,
-    value: result
-});
+
 const changeToLogout = isLogin => ({
     type: types.LOGINOUT,
     value: isLogin
+});
+export const changeLogin = userInfo => ({
+    type: types.LOGIN,
+    userInfo: userInfo
 });
 export const login = (name, password) => {
     return dispatch => {
         requireLoginApi(name, password).then(resp => {
             if (resp.success === true) {
-                dispatch(changeLogin(resp));
-                localStorage.setItem('TOKEN', resp.data[0].token);
-                localStorage.setItem('USERINFO', JSON.stringify(resp.data[0]));
+                // data:[{
+                // token: 'Bearer sdfafaef',
+                // name:'aaaa'
+                //avatar_url:'http:aaa'
+                //}]
+                const { data } = resp;
+                dispatch(changeLogin(data));
+                localStorage.setItem('TOKEN', data[0].token);//设置TOKEN
+                localStorage.setItem('USERINFO', JSON.stringify(data[0]));//存储用户信息
             } else {
                 const message = new Message();
                 message.show({

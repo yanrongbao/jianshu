@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Header from 'component/header';
 import { Route, Switch } from 'react-router-dom';
 import RouterGuard from 'router/routerGuard';
+import { actionCreators } from 'views/pages/login/store'
 
 class Layout extends PureComponent {
     render () {
@@ -19,11 +20,19 @@ class Layout extends PureComponent {
             </div>
         )
     }
-    componentDidMount () {
+    componentWillMount () {
+        const userInfo = JSON.parse(localStorage.getItem('USERINFO'));
+        if (userInfo) {
+            this.props.handleLoginState(userInfo)
+        }
     }
 }
 const mapState = state => ({
-
+})
+const mapDispatch = dispatch => ({
+    handleLoginState (userInfo) {
+        dispatch(actionCreators.changeLogin([userInfo]))
+    }
 })
 function RouteWithSubRoutes (route) {
     return (
@@ -35,4 +44,4 @@ function RouteWithSubRoutes (route) {
         />
     );
 }
-export default connect(mapState, null)(Layout)
+export default connect(mapState, mapDispatch)(Layout)

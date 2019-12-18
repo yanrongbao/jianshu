@@ -1,19 +1,25 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
 import { ListItem, ListInfo, ListMore } from '../style';
-import { actionCreators } from '../store';
 import { Link } from 'react-router-dom';
-class List extends PureComponent {
+import { requireHomeList } from 'apis/pages/home';
+import { fromJS } from 'immutable';
+export default class List extends PureComponent {
+    componentDidMount () {
+        this.getListData(this.state.articlePage)
+    }
+    state = {
+        articlePage: 1,
+        articleList: []
+    }
     render () {
-        const { articleList, getMoreList, articlePage } = this.props;
+        const { articleList, articlePage } = this.state;
         return (
             <div>
                 {articleList.map((item, index) => {
                     return (
-
-                        <ListItem>
+                        <ListItem key={index}>
                             <ListInfo>
-                                <Link key={index} to={'/index/detail/' + item.get('id')}>
+                                <Link to={'/index/detail/' + item.get('id')}>
                                     <h3 className="title">
                                         {item.get('title')}
                                     </h3>
@@ -23,7 +29,7 @@ class List extends PureComponent {
                                 <div className="toolbar">
                                     <span className="meta">
                                         <i className="iconfont">&#xeaee;</i>
-                                        {item.get('writing_words')}
+                                        {this.formatterNumber(item.get('writing_words'))}
                                     </span>
                                     <span className="nickname">
                                         {item.get('author')}
@@ -45,25 +51,46 @@ class List extends PureComponent {
                         </ListItem>
                     );
                 })}
-                <ListMore onClick={() => getMoreList(articlePage)}>
-                    更多内容
+                <ListMore onClick={() => this.getMoreList()}>
+                    阅读更多
                 </ListMore>
             </div>
         );
     }
-}
-const mapState = state => {
-    return {
-        articleList: state.getIn(['home', 'articleList']),
-        articlePage: state.getIn(['home', 'articlePage'])
-    };
-};
-const mapDispatch = dispatch => ({
-    getMoreList (articlePage) {
-        dispatch(actionCreators.getMoreList(articlePage));
+    getListData (articlePage) {
+        requireHomeList(articlePage).then(resp => {
+            this.setState({
+                articleList: fromJS(resp.data)
+            })
+        })
     }
-});
-export default connect(
-    mapState,
-    mapDispatch
-)(List);
+    async getMoreList () {
+        await this.setStateAsync({
+            articlePage: this.state.articlePage + 1
+        })
+        requireHomeList(this.state.articlePage).then(resp => {
+            this.setState((preState) => ({
+                articleList: preState.articleList.concat(fromJS(resp.data))
+            }))
+        })
+
+    }
+    setStateAsync (state) {
+        return new Promise((resolve, reject) => {
+            try {
+                this.setState(state, resolve);
+            } catch (error) {
+                reject(error);
+            }
+        })
+    }
+    formatterNumber (num) {
+        if (num.length === 3) {
+            return `0.${num.charAt(1)}`
+        } else if (num.length < 3) {
+            return `0`
+        } else {
+            return `${num.slice(0, num.length - 3)}.${num.charAt(num.length - 3)}`
+        }
+    }
+}

@@ -1,37 +1,12 @@
 import axios from 'axios';
 import * as types from './actionTypes';
-import { fromJS } from 'immutable';
-import { requireWriteList, requireHomeList } from 'apis/pages/home'
-const changeHomeData = result => ({
-    type: types.CHANGE_HOME_DATA,
-    articleList: result
-});
-const addHomeList = (list, articlePage) => ({
-    type: types.ADD_HOME_LIST,
-    list: fromJS(list),
-    articlePage
-});
+import { requireWriteList } from 'apis/pages/home';
 const dispatchWriteList = (result, writePage, totalWritePage) => ({
     type: types.GET_WRITE_LIST,
     writeList: result,
     totalWritePage,
     writePage
 });
-export const getHomeInfo = () => {
-    return dispatch => {
-        requireHomeList().then(resp => {
-            dispatch(changeHomeData(resp.data));
-        })
-    };
-};
-export const getMoreList = articlePage => {
-    return dispatch => {
-        axios.get('/api/homeList.json?page=' + articlePage).then(resp => {
-            let result = resp.data.data;
-            dispatch(addHomeList(result, articlePage + 1));
-        });
-    };
-};
 export const getWriteList = (writePage) => {
     return dispatch => {
         requireWriteList().then(resp => {

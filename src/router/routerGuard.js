@@ -1,16 +1,15 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 export default class RouterGuard extends PureComponent {
     constructor(props) {
         super(props)
     }
     componentWillMount () {
-        let { history: { replace } } = this.props
-        console.log(this.props)
-        // if (a) {
-        //     replace('/index')
-        // }
+        let { location: { pathname }, history: { replace } } = this.props;
+        if (pathname === '/login' && localStorage.getItem('TOKEN')) {
+            replace('/index');
+        }
     }
     render () {
         const { router } = this.props;
