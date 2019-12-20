@@ -1,22 +1,17 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Header from 'component/header';
-import { Route, Switch } from 'react-router-dom';
 import RouterGuard from 'router/routerGuard';
-import { actionCreators } from 'views/pages/login/store'
+import { actionCreators } from 'views/pages/login/store';
+import RouterView from 'router/bubrouting';
 
 class Layout extends PureComponent {
     render () {
+        const { routes } = this.props;
         return (
             <div>
                 <Header />
-                <Switch>
-                    {
-                        this.props.routes.map((route, i) => {
-                            return <RouteWithSubRoutes key={i} {...route} />
-                        })
-                    }
-                </Switch>
+                <RouterView routes={routes} />
             </div>
         )
     }
@@ -34,14 +29,4 @@ const mapDispatch = dispatch => ({
         dispatch(actionCreators.changeLogin([userInfo]))
     }
 })
-function RouteWithSubRoutes (route) {
-    return (
-        <Route
-            path={route.path}
-            render={props => (
-                <RouterGuard {...props} router={route} />
-            )}
-        />
-    );
-}
 export default connect(mapState, mapDispatch)(Layout)

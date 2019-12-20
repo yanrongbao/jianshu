@@ -65,8 +65,7 @@ class UserList extends PureComponent {
         pagination: {}
     }
     render () {
-        const { form: { getFieldDecorator }, routes } = this.props;
-        console.log(routes)
+        const { form: { getFieldDecorator } } = this.props;
         return (
             <div className="jane-admin-inner-layout">
                 <Form layout='inline' name="form" className="jane-admin-search">

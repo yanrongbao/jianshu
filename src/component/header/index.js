@@ -129,7 +129,6 @@ class Header extends Component {
                     </SearchInfoItem>
                 );
             }
-            console.log(pageList)
         }
         if (focused || mouseIn) {
             return (

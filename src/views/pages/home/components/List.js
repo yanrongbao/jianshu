@@ -12,7 +12,7 @@ export default class List extends PureComponent {
         articleList: []
     }
     render () {
-        const { articleList, articlePage } = this.state;
+        const { articleList } = this.state;
         return (
             <div>
                 {articleList.map((item, index) => {

@@ -144,7 +144,6 @@ class RegisterBox extends PureComponent {
                 this.phone.value,
                 this.verificationCode.value
             )
-            console.log(result)
         }
     }
     async checkDuplicateName (name) {
@@ -152,8 +151,6 @@ class RegisterBox extends PureComponent {
             const result = await requireCheckUserApi(name);
             this.setState({
                 isNameRepeat: result.success ? false : true
-            }, () => {
-                console.log(this.state.isNameRepeat)
             })
 
         } else {

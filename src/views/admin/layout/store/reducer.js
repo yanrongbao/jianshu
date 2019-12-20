@@ -10,7 +10,7 @@ const layoutState = fromJS({
                 {
                     key: '01_01',
                     title: '用户列表',
-                    url: '/admin/user'
+                    url: '/admin/user/list'
                 }
             ]
         }

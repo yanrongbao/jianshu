@@ -1,4 +1,3 @@
-import axios from 'axios';
 import * as types from './actionTypes';
 import { requireWriteList } from 'apis/pages/home';
 const dispatchWriteList = (result, writePage, totalWritePage) => ({

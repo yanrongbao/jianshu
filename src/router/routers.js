@@ -1,12 +1,13 @@
 
 import { lazy } from 'react';
+import adminRoutes from './adminRoutes'
 const routes = [
     {
         path: '/index',
         component: lazy(() => import('views/pages/layout')),
         exact: false,
         auth: true,
-        route: [
+        children: [
             {
                 path: '/index/',
                 component: lazy(() => import('views/pages/home')),
@@ -38,14 +39,7 @@ const routes = [
         component: lazy(() => import('views/admin/layout')),
         exact: false,
         auth: true,
-        route: [
-            {
-                path: '/admin/user',
-                component: lazy(() => import('views/admin/user')),
-                exact: true,
-                auth: true,
-            },
-        ]
+        children: adminRoutes
     },
 ]
 export default routes;

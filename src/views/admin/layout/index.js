@@ -2,7 +2,8 @@ import './index.less';
 import React, { PureComponent } from 'react';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import { connect } from 'react-redux';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import RouterView from 'router/bubrouting';
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -50,13 +51,7 @@ class AdminLayout extends PureComponent {
                             <Breadcrumb.Item>Bill</Breadcrumb.Item>
                         </Breadcrumb>
                         <div className="jane-admin-route">
-                            <Switch>
-                                {
-                                    routes.map((route, i) => {
-                                        return <RouteWithSubRoutes key={i} {...route} />
-                                    })
-                                }
-                            </Switch>
+                            <RouterView routes={routes} />
                         </div>
                     </Content>
                     <Footer className="jane-admin-footer">Ant Design ©2018 Created by Ant UED</Footer>
@@ -67,16 +62,6 @@ class AdminLayout extends PureComponent {
     onCollapse = collapsed => {
         this.setState({ collapsed });
     };
-}
-function RouteWithSubRoutes (route) {
-    return (
-        <Route
-            path={route.path}
-            render={props => (
-                <route.component {...props} routes={route.routes} />
-            )}
-        />
-    );
 }
 
 const mapState = state => ({
