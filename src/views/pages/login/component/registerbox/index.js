@@ -130,8 +130,8 @@ class RegisterBox extends PureComponent {
     async submit (e) {
         stopDefault(e);
         const errorMsg = this.checkFromRules();
+        const message = new Message();
         if (errorMsg) {
-            const message = new Message();
             message.show({
                 type: 'warn',
                 text: errorMsg,
@@ -144,6 +144,11 @@ class RegisterBox extends PureComponent {
                 this.phone.value,
                 this.verificationCode.value
             )
+            message.show({
+                type: 'warn',
+                text: result.msg,
+                duration: 2000,    // 不会自动消失
+            });
         }
     }
     async checkDuplicateName (name) {

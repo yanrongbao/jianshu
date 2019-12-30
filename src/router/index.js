@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import routes from './routers';//路由配置文件
-import RouterGuard from './routerGuard';//路由守卫文件
+import routes from './routes';//路由配置文件
+import RouterGuard from './views/routerGuard';//路由守卫文件
 export default () => (
     <Router>
         {

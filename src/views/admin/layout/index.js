@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import RouterView from 'router/bubrouting';
+import RouterView from 'router/views/routerView';
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -24,17 +24,17 @@ class AdminLayout extends PureComponent {
                             navList.map((itemF, index) => {
                                 return (
                                     <SubMenu
-                                        key={itemF.get('key')}
+                                        key={itemF.get('path')}
                                         title={
                                             <span>
-                                                <Icon type={itemF.get('type')} />
-                                                <span>{itemF.get('title')}</span>
+                                                <Icon type={itemF.get('meta').get('iconClass')} />
+                                                <span>{itemF.get('meta').get('name')}</span>
                                             </span>
                                         }
                                     >
                                         {itemF.get('children').map(itemC => {
                                             return (
-                                                <Menu.Item key={itemC.get('key')}><Link to={itemC.get('url')}>{itemC.get('title')}</Link></Menu.Item>
+                                                <Menu.Item key={itemC.get('path')}><Link to={itemC.get('path')}>{itemC.get('meta').name}</Link></Menu.Item>
                                             )
                                         })}
                                     </SubMenu>

@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Header from 'component/header';
-import RouterGuard from 'router/routerGuard';
 import { actionCreators } from 'views/pages/login/store';
-import RouterView from 'router/bubrouting';
+import RouterView from 'router/views/routerView';
 
 class Layout extends PureComponent {
     render () {

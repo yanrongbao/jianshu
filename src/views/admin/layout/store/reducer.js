@@ -1,20 +1,7 @@
 import { fromJS } from 'immutable';
-
+import { adminRoutes } from 'router/routes/routes';
 const layoutState = fromJS({
-    navList: [
-        {
-            key: '01',
-            title: '用户管理',
-            type: 'user',
-            children: [
-                {
-                    key: '01_01',
-                    title: '用户列表',
-                    url: '/admin/user/list'
-                }
-            ]
-        }
-    ],
+    navList: adminRoutes,
 })
 
 export default (state = layoutState, action) => {
