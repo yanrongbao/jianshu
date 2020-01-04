@@ -57,6 +57,21 @@ const data = [
         phone: 17858805106,
         create_at: '2019-12-05 16:17:31',
     },
+    {
+        key: '3',
+        name: 'Joe Black',
+        avatar_url: 'http://localhost:8080/images/c.png',
+        phone: 17858805106,
+        create_at: '2019-12-05 16:17:31',
+    },
+    {
+        key: '3',
+        name: 'Joe Black',
+        avatar_url: 'http://localhost:8080/images/c.png',
+        phone: 17858805106,
+        create_at: '2019-12-05 16:17:31',
+    }
+
 ];
 
 
@@ -80,7 +95,7 @@ class UserList extends PureComponent {
                         <Button type="primary">新增</Button>
                     </Form.Item>
                 </Form>
-                <Table size='middle' pagination={this.state.pagination} columns={columns} dataSource={data} />
+                <Table size='middle' scroll={{ y: 'calc(100vh - 363px)' }} pagination={this.state.pagination} columns={columns} dataSource={data} />
             </div>
         );
     }

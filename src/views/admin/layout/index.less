@@ -1,5 +1,5 @@
  .jane-admin-layout{
-    min-height: 100vh;
+    height: 100vh;
     .logo {
         height: 32px;
         background: rgba(255, 255, 255, 0.2);
@@ -15,6 +15,7 @@
     .jane-admin-content{
         margin: 0 16px;
         display: flex;
+        flex:1;
         flex-direction: column;
     }
     .jane-admin-breadcrumb{
@@ -24,17 +25,28 @@
         padding: 24px;
         background: #fff;
         flex: 1;
+        height: 0;
+        overflow: hidden;
     }
     .jane-admin-footer{
         text-align: center;
     }
     .jane-admin-inner-layout{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
         .jane-admin-search{
             padding-bottom: 10px;
             .jane-icon {
                 color: rgba(0,0,0,.25);
             }
         }
+        .ant-table-wrapper{
+            flex: 1;height: 0;
+        }
+    }
+    .ant-layout{
+        height: 100vh;
     }
     button{
         margin-right: 8px;
@@ -42,4 +54,16 @@
     button:last-child{
         margin-right: 0px;
     }
+    // .ant-spin-nested-loading{
+    //     overflow: hidden;
+    // }
+    // .ant-spin-nested-loading,.ant-spin-container,.ant-table-content,.ant-table table{
+    //     height: 100%;
+    // }
+    // .ant-table{
+    //     height: calc(100% - 57px);
+    // }
+    // .ant-table-body{
+
+    // }
  }

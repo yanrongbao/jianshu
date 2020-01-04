@@ -32,9 +32,9 @@ class AdminLayout extends PureComponent {
                                             </span>
                                         }
                                     >
-                                        {itemF.get('children').map(itemC => {
+                                        {itemF.get('children') && itemF.get('children').map(itemC => {
                                             return (
-                                                <Menu.Item key={itemC.get('path')}><Link to={itemC.get('path')}>{itemC.get('meta').name}</Link></Menu.Item>
+                                                <Menu.Item key={itemC.get('path')}><Link to={itemC.get('path')}>{itemC.get('meta').get('name')}</Link></Menu.Item>
                                             )
                                         })}
                                     </SubMenu>

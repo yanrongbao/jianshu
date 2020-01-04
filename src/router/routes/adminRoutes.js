@@ -30,6 +30,7 @@ export default [
         meta: {
             name: '文章列表',
             iconClass: 'user'
-        }
+        },
+        children: []
     },
 ]
